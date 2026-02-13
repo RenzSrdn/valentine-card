@@ -31,10 +31,12 @@ function launchHearts() {
 }
 
 /* Generate QR Code */
+const qrSize = Math.min(window.innerWidth * 0.28, 140);
+
 new QRCode(document.getElementById("qrcode"), {
     text: "https://open.spotify.com/playlist/0PlVrLL8xPeXWcFpk61paH?si=5074bcd794a54636&pt=26751e39d7119467ed191f47fefdae95",
-    width: 100,
-    height: 100,
+    width: qrSize,
+    height: qrSize,
     colorDark: "#b03052",
     colorLight: "#ffffff",
     correctLevel: QRCode.CorrectLevel.H
