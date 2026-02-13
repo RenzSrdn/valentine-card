@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine Card</title>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+    <!-- QR Code Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+
+<div class="scene">
+    <div class="card" id="card">
+
+        <!-- FRONT -->
+        <div class="card-face card-front">
+            <br>
+            <br>
+            <h2>Per:</h2>
+            <h2>la mia Principessa</h2>
+            <br>
+            <div class="big-heart">❤️</div>
+            <br>
+            <h3>Da: Renz</h3>
+            <p class="tap">tap here</p>
+        </div>
+
+        <!-- BACK -->
+        <div class="card-face card-back">
+            <h1>Buon San Valentino!</h1>
+
+            <div class="letter">
+                <p>Non servono grandi parole</p>
+                <p>per dirti quanto sei importante.</p>
+                <br>
+                <p>Mi basta starti accanto,</p>
+                <p>ridere con te,</p>
+                <p>tenerti la mano.</p>
+                <br>
+                <p>Se questo è amore,</p>
+                <p>allora voglio viverlo</p>
+                <p>ogni giorno con te.</p>
+            </div>
+            
+            <p class="scan">Vuoi fare una playlist assieme? 💕</p>
+            <div id="qrcode"></div>
+
+        </div>
+
+    </div>
+</div>
+
+<div id="confetti-container"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
