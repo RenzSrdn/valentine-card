@@ -11,13 +11,13 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: clamp(16px, 4vw, 32px);
+    padding: 20px;
 }
 
-/* Scene sized relative to screen */
+/* 3D Scene */
 .scene {
     width: min(92vw, 420px);
-    height: min(86vh, 620px);
+    height: min(88dvh, 620px);
     perspective: 1200px;
 }
 
@@ -39,6 +39,7 @@ body {
 .card-face {
     position: absolute;
     inset: 0;
+    overflow: hidden;
 
     border-radius: 24px;
     box-shadow: 0 25px 60px rgba(0,0,0,0.15);
@@ -47,121 +48,86 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 
-    padding: clamp(20px, 5vw, 30px);
+    padding: 28px;
     text-align: center;
 }
 
-/* FRONT LAYOUT */
+/* FRONT */
 .card-front {
     background: #ff4d6d;
     color: white;
-    justify-content: space-between;
+    gap: 18px;
 }
 
-/* BACK LAYOUT */
+/* BACK */
 .card-back {
     transform: rotateY(180deg);
     background: #fff0f3;
     color: #b03052;
+}
 
-    justify-content: flex-start;
-    gap: clamp(14px, 2.5vh, 22px);
+/* Scrollable inner content */
+.back-content {
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+
+    width: 100%;
+    height: 100%;
+    padding-right: 4px;
 }
 
 /* Typography */
 h1 {
-    font-size: clamp(22px, 4vh, 34px);
+    font-size: clamp(24px, 3.5vh, 32px);
 }
 
 h2 {
-    font-size: clamp(18px, 3vh, 26px);
+    font-size: clamp(20px, 3vh, 26px);
 }
 
 h3 {
-    font-size: clamp(16px, 2.6vh, 22px);
+    font-size: clamp(18px, 2.6vh, 22px);
 }
 
 p {
-    font-size: clamp(14px, 2.3vh, 18px);
+    font-size: clamp(15px, 2.3vh, 18px);
 }
 
-/* Title spacing */
-.card-front h2:first-child {
-    margin-top: 10px;
-}
-
-.card-front h2 + h2 {
-    margin-bottom: 10px;
-}
-
-/* CSS Heart (non emoji) */
-.big-heart {
-    position: relative;
-    width: clamp(70px, 16vh, 110px);
-    height: clamp(70px, 16vh, 110px);
-    background: #b03052;
-    transform: rotate(-45deg);
-    margin: 10px 0;
-    flex-shrink: 0;
-}
-
-.big-heart::before,
-.big-heart::after {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: #b03052;
-    border-radius: 50%;
-}
-
-.big-heart::before {
-    top: -50%;
-    left: 0;
-}
-
-.big-heart::after {
-    left: 50%;
-    top: 0;
-}
-
-/* Letter styling */
+/* Letter */
 .letter {
     display: flex;
     flex-direction: column;
     gap: 6px;
-    max-width: 90%;
     line-height: 1.5;
 }
 
-/* Add stanza breathing space */
 .letter p:nth-child(3),
 .letter p:nth-child(6) {
-    margin-top: 14px;
+    margin-top: 12px;
 }
 
-/* QR section */
-.scan {
-    margin-top: 6px;
-}
-
+/* QR */
 #qrcode {
     display: flex;
     justify-content: center;
-    align-items: center;
 }
 
 #qrcode canvas {
-    width: clamp(80px, 15vh, 120px) !important;
-    height: clamp(80px, 15vh, 120px) !important;
+    width: 100px !important;
+    height: 100px !important;
 }
 
-/* Tap hint pinned to bottom */
+/* Tap hint */
 .tap {
     margin-top: auto;
-    font-size: clamp(12px, 2vh, 14px);
-    opacity: 0.7;
+    opacity: 0.75;
 }
 
 /* Confetti */
@@ -183,4 +149,34 @@ p {
         transform: translateY(110vh) rotate(360deg);
         opacity: 0;
     }
+}
+
+/* CSS Heart */
+.big-heart {
+    position: relative;
+    width: 90px;
+    height: 90px;
+    background: #b03052;
+    transform: rotate(-45deg);
+    margin: 10px 0;
+}
+
+.big-heart::before,
+.big-heart::after {
+    content: "";
+    position: absolute;
+    width: 90px;
+    height: 90px;
+    background: #b03052;
+    border-radius: 50%;
+}
+
+.big-heart::before {
+    top: -45px;
+    left: 0;
+}
+
+.big-heart::after {
+    left: 45px;
+    top: 0;
 }
