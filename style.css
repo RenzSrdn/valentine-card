@@ -14,14 +14,17 @@ body {
     padding: clamp(16px, 4vw, 32px);
 }
 
-/* 3D Scene */
+/* Scene scales based on screen */
 .scene {
     width: min(92vw, 420px);
-    height: min(88dvh, 620px);
+    height: min(86vh, 620px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     perspective: 1200px;
 }
 
-/* Card */
+/* Card fills the scene */
 .card {
     width: 100%;
     height: 100%;
@@ -39,7 +42,6 @@ body {
 .card-face {
     position: absolute;
     inset: 0;
-    overflow: hidden; /* VERY IMPORTANT */
 
     border-radius: 24px;
     box-shadow: 0 25px 60px rgba(0,0,0,0.15);
@@ -50,105 +52,95 @@ body {
     align-items: center;
     justify-content: center;
 
-    padding: clamp(20px, 5vw, 30px);
+    padding: clamp(16px, 4vw, 28px);
+    gap: clamp(8px, 2vh, 18px);
+
     text-align: center;
 }
 
-/* FRONT STYLE */
+/* FRONT */
 .card-front {
     background: #ff4d6d;
     color: white;
-    gap: clamp(12px, 3vw, 22px);
 }
 
+/* BACK */
+.card-back {
+    transform: rotateY(180deg);
+    background: #fff0f3;
+    color: #b03052;
+}
+
+/* Typography scales by height */
+h1 {
+    font-size: clamp(22px, 4vh, 34px);
+}
+
+h2 {
+    font-size: clamp(18px, 3.2vh, 26px);
+}
+
+h3 {
+    font-size: clamp(16px, 2.8vh, 22px);
+}
+
+p {
+    font-size: clamp(14px, 2.4vh, 18px);
+}
+
+/* Letter layout */
+.letter {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(2px, 0.8vh, 6px);
+    line-height: 1.4;
+}
+
+/* QR code scales automatically */
+#qrcode canvas {
+    width: clamp(70px, 16vh, 110px) !important;
+    height: clamp(70px, 16vh, 110px) !important;
+    margin-top: 6px;
+}
+
+/* CSS Heart (non-emoji) */
 .big-heart {
     position: relative;
-    width: clamp(70px, 18vw, 110px);
-    height: clamp(70px, 18vw, 110px);
-    background: #e63946; /* solid red */
+    width: clamp(60px, 14vh, 100px);
+    height: clamp(60px, 14vh, 100px);
+    background: #b03052;
     transform: rotate(-45deg);
-    margin: 20px 0;
+    margin: 6px 0;
 }
 
-/* Top left circle */
 .big-heart::before,
 .big-heart::after {
     content: "";
     position: absolute;
     width: 100%;
     height: 100%;
-    background: #e63946;
+    background: #b03052;
     border-radius: 50%;
 }
 
-/* Left bump */
 .big-heart::before {
     top: -50%;
     left: 0;
 }
 
-/* Right bump */
 .big-heart::after {
     left: 50%;
     top: 0;
 }
 
+/* Tap hint */
 .tap {
+    font-size: clamp(12px, 2vh, 14px);
+    opacity: 0.75;
     margin-top: auto;
-    font-size: 14px;
-    opacity: 0.8;
 }
 
-/* BACK STYLE */
-.card-back {
-    transform: rotateY(180deg);
-    background: #fff0f3;
-    color: #b03052;
-
-    justify-content: flex-start;
-}
-
-.card-back > * {
-    max-width: 100%;
-}
-.card-back h1 {
-    margin-bottom: 20px;
-}
-
-.back-content {
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 14px;
-
-    width: 100%;
-    height: 100%;
-    padding-right: 4px;
-}
-
-.letter {
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-}
-
-.letter p:nth-child(3),
-.letter p:nth-child(6) {
-    margin-top: 12px;
-}
-
-#qrcode {
-    margin-top: 25px;
-}
-
-#qrcode canvas {
-    width: clamp(80px, 22vw, 120px) !important;
-    height: clamp(80px, 22vw, 120px) !important;
-}
-
-/* CONFETTI */
+/* Confetti */
 #confetti-container {
     position: fixed;
     inset: 0;
@@ -166,17 +158,5 @@ body {
     to {
         transform: translateY(110vh) rotate(360deg);
         opacity: 0;
-    }
-}
-
-/* Responsive */
-@media (max-width: 480px) {
-    .scene {
-        height: 520px;
-    }
-
-    .big-heart {
-    font-size: clamp(60px, 14vw, 95px);
-    animation: pulse 1.5s infinite;
     }
 }
