@@ -17,13 +17,14 @@ body {
 /* 3D Scene */
 .scene {
     width: min(92vw, 420px);
+    height: min(88dvh, 620px);
     perspective: 1200px;
 }
 
 /* Card */
 .card {
     width: 100%;
-    aspect-ratio: 3 / 4;
+    height: 100%;
     position: relative;
     transform-style: preserve-3d;
     transition: transform 0.9s cubic-bezier(.68,-0.55,.27,1.55);
@@ -38,16 +39,18 @@ body {
 .card-face {
     position: absolute;
     inset: 0;
+    overflow: hidden; /* VERY IMPORTANT */
+
     border-radius: 24px;
     box-shadow: 0 25px 60px rgba(0,0,0,0.15);
     backface-visibility: hidden;
 
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
 
-    padding: clamp(20px, 5vw, 32px);
+    padding: clamp(20px, 5vw, 30px);
     text-align: center;
 }
 
@@ -75,18 +78,34 @@ body {
     transform: rotateY(180deg);
     background: #fff0f3;
     color: #b03052;
+
+    justify-content: flex-start;
 }
 
+.card-back > * {
+    max-width: 100%;
+}
 .card-back h1 {
     margin-bottom: 20px;
 }
 
-.letter {
+.back-content {
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+
     display: flex;
     flex-direction: column;
-    gap: 6px;
-    margin: 18px 0;
-    line-height: 1.5;
+    align-items: center;
+    gap: 14px;
+
+    width: 100%;
+    height: 100%;
+    padding-right: 4px; /* prevents scrollbar overlap */
+}
+
+.letter {
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 .letter p:nth-child(3),
